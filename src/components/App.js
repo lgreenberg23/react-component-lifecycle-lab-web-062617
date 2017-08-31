@@ -29,6 +29,9 @@ class App extends React.Component {
       latestTweets: newTweets
     });
   }
+   componentWillMount() {
+    this.fetchTweets()
+  }
 
   render() {
     return (
@@ -36,6 +39,13 @@ class App extends React.Component {
         <TweetWall newTweets={this.state.latestTweets} />
       </div>
     )
+  }
+
+  componentDidMount() {
+    this.startInterval()
+  }
+  componentWillUnmount(){
+    this.cleanUpInterval()
   }
 }
 
